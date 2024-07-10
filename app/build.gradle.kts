@@ -50,7 +50,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -66,4 +65,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // System UI Controller
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+
+    // Material Icons Extended
+    implementation("androidx.compose.material:material-icons-extended:1.5.1")
 }
