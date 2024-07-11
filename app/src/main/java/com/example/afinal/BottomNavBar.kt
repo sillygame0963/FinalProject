@@ -1,7 +1,5 @@
 package com.example.afinal
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.Home
@@ -14,8 +12,10 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.afinal.data.BottomNavItem
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 
 val items = listOf(
     BottomNavItem(
@@ -39,14 +39,20 @@ val items = listOf(
     )
 )
 
-@Preview
 @Composable
-fun BottomNavBar() {
+fun BottomNavBar(navController: NavHostController) {
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
-                selected = index == 0,
-                onClick = {},
+                selected = false,
+                onClick = {
+                    when (item.title) {
+                        "Home" -> navController.navigate("home")
+                        "Wallet" -> navController.navigate("wallet")
+                        "Notifications" -> navController.navigate("notifications")
+                        "Account" -> navController.navigate("account")
+                    }
+                },
                 icon = {
                     Icon(
                         imageVector = item.icon,
@@ -55,10 +61,18 @@ fun BottomNavBar() {
                     )
                 },
                 label = {
-                    Text(text = item.title,
-                        color = MaterialTheme.colorScheme.onBackground)
+                    Text(
+                        text = item.title,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
                 }
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun BottomNavBarPreview() {
+    BottomNavBar(navController = rememberNavController())
 }
