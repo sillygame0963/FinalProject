@@ -152,7 +152,7 @@ fun CurrencySection() {
                     val width = BoxWithConstraintsScope.maxWidth / 3
 
                     Column(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
                     ) {
                         Spacer(modifier = Modifier.height(16.dp))
 
@@ -213,18 +213,47 @@ fun Item(index: Int, width: Dp) {
             .padding(bottom = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(GreenStart)
-            .padding(4.dp)
+        Row(
+            modifier = Modifier.width(width),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(
-                imageVector = CurrencyItem.icon,
-                contentDescription = CurrencyItem.name,
-                modifier = Modifier.size(18.dp),
-                tint = Color.White
+            Box(modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .background(GreenStart)
+                .padding(4.dp)
+            ) {
+                Icon(
+                    imageVector = CurrencyItem.icon,
+                    contentDescription = CurrencyItem.name,
+                    modifier = Modifier.size(18.dp),
+                    tint = Color.White
 
+                )
+            }
+            Text(
+                modifier = Modifier.padding(start = 10.dp),
+                text = CurrencyItem.name,
+                fontSize = 20.sp,
+                color = MaterialTheme.colorScheme.onBackground,
+                fontWeight = FontWeight.SemiBold
             )
         }
+        Text(
+            modifier = Modifier.width(width).padding(start = 10.dp),
+            text = "$ ${CurrencyItem.buy}",
+            fontSize = 16.sp,
+            color = MaterialTheme.colorScheme.onBackground,
+            fontWeight = FontWeight.SemiBold,
+            textAlign = TextAlign.End
+        )
+
+        Text(
+            modifier = Modifier.width(width).padding(start = 10.dp),
+            text = "$ ${CurrencyItem.sell}",
+            fontSize = 16.sp,
+            color = MaterialTheme.colorScheme.onBackground,
+            fontWeight = FontWeight.SemiBold,
+            textAlign = TextAlign.End
+        )
     }
 }
