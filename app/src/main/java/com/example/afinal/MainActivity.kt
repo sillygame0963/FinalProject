@@ -65,12 +65,15 @@ fun HomeScreen() {
             BottomNavBar()
         }
     ) {
-        Column(modifier = Modifier.fillMaxSize().padding(it)
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(it)
         ) {
         WalletSection()
         CardSection()
             Spacer(modifier = Modifier.height(16.dp))
         FinanceSection()
+        CurrencySection()
         }
     }
 }
