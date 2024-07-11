@@ -1,15 +1,29 @@
 package com.example.afinal
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.material3.Text
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.afinal.data.CardItem
 import com.example.afinal.ui.theme.BlueEnd
 import com.example.afinal.ui.theme.BlueStart
@@ -66,6 +80,7 @@ fun getGradient(
     )
 }
 
+@Preview
 @Composable
 fun CardSection() {
     LazyRow {
@@ -87,7 +102,48 @@ fun Card(
 
     var image = painterResource(id = R.drawable.ic_visa)
     if (card.Type == "MASTER CARD") {
-        var image = painterResource(id = R.drawable.ic_mastercard)
+        image = painterResource(id = R.drawable.ic_mastercard)
     }
-    Box(modifier = Modifier.padding(start = 16.dp, end = lastItemPaddingEnd))
+    Box(modifier = Modifier.padding(start = 16.dp, end = lastItemPaddingEnd)
+    ) {
+        Column (
+            modifier = Modifier
+                .clip(RoundedCornerShape(25.dp))
+                .background(card.Color)
+                .width(250.dp)
+                .height(160.dp)
+                .clickable {}
+                .padding(vertical = 12.dp, horizontal = 16.dp),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Image(
+                painter = image,
+                contentDescription = card.Name,
+                modifier = Modifier.width(60.dp)
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = card.Name,
+                color = Color.White,
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                text = "$ ${card.Balance}",
+                color = Color.White,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                text = card.Number,
+                color = Color.White,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
 }

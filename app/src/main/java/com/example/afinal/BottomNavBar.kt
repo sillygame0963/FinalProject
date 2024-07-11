@@ -43,27 +43,22 @@ val items = listOf(
 @Composable
 fun BottomNavBar() {
     NavigationBar {
-        Row (
-            modifier = Modifier.background(MaterialTheme.colorScheme.onSurface)
-        ) {
-
-            items.forEachIndexed { index, item ->
-                NavigationBarItem(
-                    selected = index == 0,
-                    onClick = {},
-                    icon = {
-                        Icon(
-                            imageVector = item.icon,
-                            contentDescription = item.title,
-                            tint = MaterialTheme.colorScheme.onBackground
-                        )
-                    },
-                    label = {
-                        Text(text = item.title,
-                            color = MaterialTheme.colorScheme.onBackground)
-                    }
+        items.forEachIndexed { index, item ->
+            NavigationBarItem(
+                selected = index == 0,
+                onClick = {},
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = item.title,
+                        tint = MaterialTheme.colorScheme.onBackground
                     )
-            }
+                },
+                label = {
+                    Text(text = item.title,
+                        color = MaterialTheme.colorScheme.onBackground)
+                }
+            )
         }
     }
 }
