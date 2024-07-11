@@ -54,9 +54,10 @@ fun SetBarcolor(color: Color) {
     }
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+//@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun HomeScreen() {
     Scaffold (
@@ -64,10 +65,10 @@ fun HomeScreen() {
             BottomNavBar()
         }
     ) {
-        Column (modifier = Modifier.fillMaxSize().padding()
+        Column(modifier = Modifier.fillMaxSize().padding(it)
         ) {
-            //WalletSection()
-            //CardSection()
+        WalletSection()
+        //CardSection()
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
