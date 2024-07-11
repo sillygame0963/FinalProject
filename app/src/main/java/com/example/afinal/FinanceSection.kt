@@ -66,7 +66,10 @@ fun FinanceSection() {
             modifier = Modifier.padding(16.dp)
         )
 
-        LazyRow {
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(16.dp), // Add spacing between items
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp) // Padding for LazyRow
+        ) {
             items(finance.size) {
                 Item(it)
             }
@@ -79,12 +82,8 @@ fun Item(
     index: Int
 ) {
     val FinanceList = finance[index]
-    var lastPaddingEnd = 0.dp
-    if (index == finance.size - 1) {
-        lastPaddingEnd = 16.dp
-    }
 
-    Column (
+    Column(
         modifier = Modifier
             .clip(RoundedCornerShape(25.dp))
             .background(MaterialTheme.colorScheme.secondaryContainer)
@@ -93,10 +92,11 @@ fun Item(
             .padding(13.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Box(modifier = Modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(FinanceList.background)
-            .padding(6.dp)
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(16.dp))
+                .background(FinanceList.background)
+                .padding(6.dp)
         ) {
             Icon(
                 imageVector = FinanceList.icon,
@@ -107,7 +107,7 @@ fun Item(
 
         Text(
             text = FinanceList.name,
-            color = MaterialTheme.colorScheme.secondaryContainer,
+            color = MaterialTheme.colorScheme.onSecondaryContainer, // Use a contrasting color
             fontWeight = FontWeight.Bold,
             fontSize = 14.sp
         )
