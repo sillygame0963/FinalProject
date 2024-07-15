@@ -66,11 +66,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // System UI Controller
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
-    // Material Icons Extended
-    implementation("androidx.compose.material:material-icons-extended:1.0.5")
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
-    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
+
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 }
