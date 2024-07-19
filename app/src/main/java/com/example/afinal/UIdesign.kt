@@ -6,5 +6,5 @@ sealed class UIdesign {
     data class SendPrompt(
         val prompt: String,
         val bitmap: Bitmap?
-    ) : UIdesign()
+    ) :UIdesign()
 }

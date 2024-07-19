@@ -1,19 +1,16 @@
 package com.example.afinal.data
 
-import android.graphics.Bitmap
 import com.google.ai.client.generativeai.GenerativeModel
-import com.google.ai.client.generativeai.type.ResponseStoppedException
-import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 object ChatData {
 
-    val api_key = "AIzaSyAD9lXrzfPdFwky_BkEaV0krXG5DojGp10"
+    private const val API_KEY = "AIzaSyAD9lXrzfPdFwky_BkEaV0krXG5DojGp10"
 
     suspend fun getResponse(prompt: String): Chat {
         val generativeModel = GenerativeModel(
-            modelName = "gemini-1.5-flash", apiKey = api_key
+            modelName = "gemini-1.5-flash", apiKey = API_KEY
         )
 
         try {
